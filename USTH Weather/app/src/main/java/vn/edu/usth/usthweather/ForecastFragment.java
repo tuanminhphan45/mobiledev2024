@@ -1,5 +1,6 @@
 package vn.edu.usth.usthweather;
 
+import android.annotation.SuppressLint;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -13,6 +14,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,13 +66,33 @@ public class ForecastFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+//        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+//
+//        view.setBackgroundColor(Color.RED);
+//        return view;
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL); // Set orientation to vertical
+        layout.setPadding(16, 16, 16, 16);
+        
+        TextView dayTextView = new TextView(getActivity());
+        dayTextView.setText("Thursday");
+        dayTextView.setTextSize(24);
+        dayTextView.setPadding(0, 0, 0, 16);
 
-        view.setBackgroundColor(Color.RED);
-        return view;
+
+        ImageView weatherIcon = new ImageView(getActivity());
+        weatherIcon.setImageResource(R.drawable.weather);
+
+
+        layout.addView(dayTextView);
+        layout.addView(weatherIcon);
+
+        return layout;
+
     }
 }
