@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ForecastFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="100px"
-        android:text="@string/hello_blank_fragment" />
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="#EDE7F6">
+
+        <include
+            android:id="@+id/item_layout"
+            layout="@layout/weather_item" />
+
+        <include
+            android:id="@+id/item_layout2"
+            layout="@layout/weather_item" />
+
+        <include
+            android:id="@+id/item_layout3"
+            layout="@layout/weather_item" />
+
+        <include
+            android:id="@+id/item_layout4"
+            layout="@layout/weather_item" />
+
+        <include
+            android:id="@+id/item_layout5"
+            layout="@layout/weather_item" />
+
+        <include
+            android:id="@+id/item_layout6"
+            layout="@layout/weather_item" />
     </LinearLayout>
+
 </FrameLayout>

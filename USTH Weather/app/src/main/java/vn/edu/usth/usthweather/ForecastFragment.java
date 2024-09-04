@@ -64,6 +64,7 @@ public class ForecastFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -75,24 +76,27 @@ public class ForecastFragment extends Fragment {
 //
 //        view.setBackgroundColor(Color.RED);
 //        return view;
-        LinearLayout layout = new LinearLayout(getActivity());
-        layout.setOrientation(LinearLayout.VERTICAL); // Set orientation to vertical
-        layout.setPadding(16, 16, 16, 16);
-        
-        TextView dayTextView = new TextView(getActivity());
-        dayTextView.setText("Thursday");
-        dayTextView.setTextSize(24);
-        dayTextView.setPadding(0, 0, 0, 16);
-
-
-        ImageView weatherIcon = new ImageView(getActivity());
-        weatherIcon.setImageResource(R.drawable.weather);
-
-
-        layout.addView(dayTextView);
-        layout.addView(weatherIcon);
-
-        return layout;
-
+//        --------------lab4--------------
+//        LinearLayout layout = new LinearLayout(getActivity());
+//        layout.setOrientation(LinearLayout.VERTICAL); // Set orientation to vertical
+//        layout.setPadding(16, 16, 16, 16);
+//
+//        TextView dayTextView = new TextView(getActivity());
+//        dayTextView.setText("Thursday");
+//        dayTextView.setTextSize(24);
+//        dayTextView.setPadding(50, 0, 0, 16);
+//
+//
+//
+//        ImageView weatherIcon = new ImageView(getActivity());
+//        weatherIcon.setImageResource(R.drawable.weather);
+//
+//
+//        layout.addView(dayTextView);
+//        layout.addView(weatherIcon);
+//
+//        return layout;
+//          --------------lab5-------
+        return inflater.inflate(R.layout.fragment_forecast, container, false);
     }
 }
