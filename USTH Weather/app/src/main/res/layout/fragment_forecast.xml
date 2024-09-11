@@ -42,4 +42,6 @@
             layout="@layout/weather_item" />
     </LinearLayout>
 
+
+
 </FrameLayout>

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "Weather";
@@ -22,9 +23,17 @@ public class WeatherActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ForecastFragment firstFragment = new ForecastFragment();
 
-        getSupportFragmentManager().beginTransaction().add(R.id.main, firstFragment).commit();
+        WeatherFragment weatherFragment = new WeatherFragment();
+        ForecastFragment forecastFragment = new ForecastFragment();
+
+
+        FragmentTransaction addLayout = getSupportFragmentManager().beginTransaction();
+
+        addLayout.add(R.id.main,weatherFragment);
+        addLayout.add(R.id.main, forecastFragment);
+
+        addLayout.commit();
 
         Log.i(TAG, "On Create");
     }
