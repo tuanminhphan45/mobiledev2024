@@ -8,38 +8,33 @@
     android:id="@+id/main"
     tools:context=".WeatherActivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <fragment
+            android:name="vn.edu.usth.usthweather.WeatherFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#03A9F4"
-            android:padding="8dp">
+            android:layout_height="match_parent"
+            >
 
-            <TextView
-                android:id="@+id/header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="USTH Weather"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+        </fragment>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="vn.edu.usth.usthweather.ForecastFragment">
 
+        </fragment>
 
-    </LinearLayout>
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="vn.edu.usth.usthweather.WeatherFragment">
+
+        </fragment>
+
+    </androidx.viewpager.widget.ViewPager>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
