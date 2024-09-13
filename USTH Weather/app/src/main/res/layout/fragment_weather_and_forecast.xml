@@ -6,8 +6,15 @@
     android:orientation="vertical"
     tools:context=".WeatherAndForecastFragment">
 
-    <TextView
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="vn.edu.usth.usthweather.WeatherFragment"
+        android:id="@+id/weatherIcon"/>
+
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:name="vn.edu.usth.usthweather.ForecastFragment"
+        android:id="@+id/tesst"/>
 </LinearLayout>

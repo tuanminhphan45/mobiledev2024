@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WeatherFragment">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#E0F7DF"
-        android:padding="16dp">
-
+    android:layout_height="wrap_content"
+    tools:context=".WeatherFragment"
+    android:background="#E0F7DF"
+    android:padding="16dp">
         <LinearLayout
             android:id="@+id/weatherInfor"
             android:layout_width="wrap_content"
@@ -25,7 +18,7 @@
                 android:id="@+id/tem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="12C"
+                android:text="@string/_12c"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -33,7 +26,7 @@
                 android:id="@+id/weatherInfor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cloudy"
+                android:text="@string/cloudy"
                 android:textColor="#666666"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -45,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="Paris"
+            android:text="@string/paris"
             android:textColor="#666666"
             android:textSize="16sp" />
 
@@ -55,7 +48,6 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
-            android:contentDescription="Weather icon"
+            android:contentDescription="@string/weather_icon"
             android:src="@drawable/weather" />
-    </RelativeLayout>
-</FrameLayout>
+</RelativeLayout>
