@@ -1,36 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weather_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ForecastFragment"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#EDE7F6">
-
-        <include
-            android:id="@+id/item_layout"
-            layout="@layout/weather_item" />
-
-        <include
-            android:id="@+id/item_layout2"
-            layout="@layout/weather_item" />
-
-        <include
-            android:id="@+id/item_layout3"
-            layout="@layout/weather_item" />
-
-        <include
-            android:id="@+id/item_layout4"
-            layout="@layout/weather_item" />
-
-        <include
-            android:id="@+id/item_layout5"
-            layout="@layout/weather_item" />
-
-        <include
-            android:id="@+id/item_layout6"
-            layout="@layout/weather_item" />
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/padding_fragment_weather_and_forecast"
+    android:orientation="vertical">
 
 </LinearLayout>

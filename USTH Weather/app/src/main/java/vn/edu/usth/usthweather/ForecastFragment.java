@@ -1,23 +1,23 @@
 package vn.edu.usth.usthweather;
 
-import android.annotation.SuppressLint;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+
+import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import vn.edu.usth.usthweather.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,39 +64,61 @@ public class ForecastFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        int[] days = {R.string.monday, R.string.tuesday, R.string.wednesday, R.string.thursday, R.string.friday, R.string.saturday, R.string.sunday, R.string.monday, R.string.tuesday, R.string.wednesday};
+        int[] weatherStatuses = {R.string.partly_cloudy, R.string.showers, R.string.rain, R.string.scattered_showers, R.string.mostly_cloudy, R.string.partly_cloudy, R.string.thunderstorms, R.string.scattered_thunderstorms, R.string.showers, R.string.scattered_thunderstorms};
+        int[] weatherIcons = {R.drawable.cloudy_sunny, R.drawable.showers, R.drawable.showers, R.drawable.cloudy_sunny_rainy, R.drawable.cloudy_sunny, R.drawable.cloudy_sunny, R.drawable.storm, R.drawable.cloudy_sunny_rainy, R.drawable.showers, R.drawable.cloudy_sunny_rainy};
+        String[] temperatures = {"24C - 31C", "24C - 30C", "22C - 23C", "22C - 27C", "22C - 30C", "24C - 31C", "25C - 28C", "24C - 27C", "24C - 26C", "23C - 27C"};
+
+        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
+        LinearLayout parentContainer = view.findViewById(R.id.weather_container);
+
+        for(int i = 0; i < days.length; i++){
+            LinearLayout weatherForecastItem = createWeatherForecast();
+            TextView tvDay = weatherForecastItem.findViewById(R.id.day);
+            tvDay.setText(days[i]);
+
+            ImageView iv = weatherForecastItem.findViewById(R.id.weather_icon);
+            iv.setImageResource(weatherIcons[i]);
+
+            TextView tvStatus = weatherForecastItem.findViewById(R.id.weather_status);
+            tvStatus.setText(weatherStatuses[i]);
+
+            TextView temperature = weatherForecastItem.findViewById(R.id.temperature);
+            temperature.setText(temperatures[i]);
+
+            parentContainer.addView(weatherForecastItem);
+        }
+
         // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-//
-//        view.setBackgroundColor(Color.RED);
-//        return view;
-//        --------------lab4--------------
-//        LinearLayout layout = new LinearLayout(getActivity());
-//        layout.setOrientation(LinearLayout.VERTICAL); // Set orientation to vertical
-//        layout.setPadding(16, 16, 16, 16);
-//
-//        TextView dayTextView = new TextView(getActivity());
-//        dayTextView.setText("Thursday");
-//        dayTextView.setTextSize(24);
-//        dayTextView.setPadding(50, 0, 0, 16);
-//
-//
-//
-//        ImageView weatherIcon = new ImageView(getActivity());
-//        weatherIcon.setImageResource(R.drawable.weather);
-//
-//
-//        layout.addView(dayTextView);
-//        layout.addView(weatherIcon);
-//
-//        return layout;
-//          --------------lab5-------
-        return inflater.inflate(R.layout.fragment_forecast, container, false);
+        return view;
+
+        /**LinearLayout ll = new LinearLayout(getContext());
+         ll.setOrientation(LinearLayout.VERTICAL);
+         TextView tv = new TextView(getContext());
+         ImageView iv = new ImageView(getContext());
+
+         ViewGroup.LayoutParams llParams = ll.getLayoutParams();
+         llParams.width = MATCH_PARENT;
+         llParams.height = MATCH_PARENT;
+         ll.setLayoutParams(llParams);
+
+         iv.setImageResource(R.drawable.storm);
+
+         tv.setText("Thursday");
+
+         ll.addView(tv);
+         ll.addView(iv);
+
+         return ll;*/
+    }
+
+    public LinearLayout createWeatherForecast(){
+        LinearLayout weatherForecast = new LinearLayout(getContext());
+        return (LinearLayout) getLayoutInflater().inflate(R.layout.weather_piece, weatherForecast);
     }
 }

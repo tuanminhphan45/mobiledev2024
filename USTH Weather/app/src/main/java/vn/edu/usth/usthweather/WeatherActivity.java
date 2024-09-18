@@ -2,88 +2,82 @@ package vn.edu.usth.usthweather;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class WeatherActivity extends AppCompatActivity {
-    private static final String TAG = "Weather";
-    private TabLayout tabLayout;
-    private ViewPager2 viewPager2;
-    private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
-    private FrameLayout frameLayout;
-
+    private final String tag = "Weather";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_weather);
 
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager2 = findViewById(R.id.myViewPager);
+        // setup ViewPager
+        PagerAdapter adapter = new HomeFragmentPagerAdapter(getSupportFragmentManager());
+        ViewPager pager = (ViewPager) findViewById(R.id.myViewPager);
+        pager.setOffscreenPageLimit(3);
+        pager.setAdapter(adapter);
 
-        homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(this);
-        viewPager2.setAdapter(homeFragmentPagerAdapter);
-        frameLayout = findViewById(R.id.frameLayout);
+        // setup link between TabLayout and ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
+        tabLayout.setupWithViewPager(pager);
+
+        // ForecastFragment forecastFragment = new ForecastFragment();
+
+        // Add the fragment to the 'container' FrameLayout
+        // getSupportFragmentManager().beginTransaction().add(R.id.mainContainer, forecastFragment).commit();
+
+        // change bar color
 
 
-        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
-            switch (position) {
-                case 0:
-                    tab.setText("Weather");
-                    break;
-                case 1:
-                    tab.setText("Forecast");
-                    break;
-                case 2:
-                    tab.setText("Weather_Forecast");
-                    break;
-            }
-        }).attach();
-
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                viewPager2.setVisibility(View.VISIBLE);
-                frameLayout.setVisibility(View.GONE);
-            }
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
+    }
 
-        Log.i(TAG, "On Create");
+    public WeatherActivity(){
+        super();
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
-        Log.i(TAG, "On Start");
+        Log.i(tag, "started");
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume(){
         super.onResume();
-        Log.i(TAG, "On Resume");
+        Log.i(tag, "resumed");
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause(){
         super.onPause();
-        Log.i(TAG, "On Pause");
+        Log.i(tag, "paused");
     }
 
     @Override
-    protected void onStop() {
+    protected void onStop(){
         super.onStop();
-        Log.i(TAG, "On Stop");
+        Log.i(tag, "stopped");
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy(){
         super.onDestroy();
-        Log.i(TAG, "On Destroy");
+        Log.i(tag, "destroyed");
     }
 }
