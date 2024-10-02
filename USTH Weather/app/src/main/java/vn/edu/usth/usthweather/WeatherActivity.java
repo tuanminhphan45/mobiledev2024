@@ -10,11 +10,14 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import android.media.MediaPlayer;
 
 import com.google.android.material.tabs.TabLayout;
 
 public class WeatherActivity extends AppCompatActivity {
     private final String tag = "Weather";
+    private MediaPlayer mMediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // setTheme(androidx.appcompat.R.style.Theme_AppCompat_DayNight);
@@ -45,6 +48,8 @@ public class WeatherActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        mMediaPlayer = MediaPlayer.create(this,R.raw.cardigan);
+        mMediaPlayer.start();
     }
 
     public WeatherActivity(){
